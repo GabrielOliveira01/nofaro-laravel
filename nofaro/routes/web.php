@@ -1,18 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+$api = app('Dingo\Api\Routing\Router');
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+$router->addRoute(['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], '/', function () {
+    return response()->json(
+        array(
+            'message' => 'No token provided!',
+            'data' => null
+        ),
+        401
+    );
+});
 
-Route::get('/', function () {
-    return view('welcome');
+$api->version('v1', function ($api) {
+    $api->group(['namespace' => 'App\Http\Controllers\App', 'middleware' => 'throttle:10,1'], function ($api) {
+        $api->post('/', 'hash@store');
+        $api->get('/', 'hash@show');
+    });
 });
