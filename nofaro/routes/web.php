@@ -14,7 +14,9 @@ $router->addRoute(['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], '/', fun
 
 $api->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Http\Controllers\App', 'middleware' => 'throttle:10,1'], function ($api) {
-        $api->post('/', 'hash@store');
-        $api->get('/', 'hash@show');
+        $api->group(['prefix' => 'hash'], function ($api) {
+            $api->post('/', 'hash@store');
+            $api->get('/', 'hash@show');
+        });
     });
 });
