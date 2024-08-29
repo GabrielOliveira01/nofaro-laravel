@@ -34,7 +34,7 @@ Antes de começar, você vai precisar rodar o comando composer install para inst
 
 ![picture alt](https://github.com/GabrielOliveira01/nofaro/blob/main/Captura%20de%20Tela%202021-06-07%20às%2011.15.58.png)
 
-#### Nesse endpoint pode passar alguns filtros na query da requisição ####
+#### Nesse endpoint pode passar alguns filtros na query da requisição. ####
 
 #### Segue abaixo exemplo: ####
 
